@@ -2,24 +2,21 @@ package main
 
 import (
 	"fmt"
-	"runtime"
 	"time"
 )
 
-func main() {
-	go func() {
-		for i := 1; i <= 50; i++ {
-			fmt.Println("I am Goroutine 1")
-			runtime.Gosched()
-		}
-	}()
+func demoLoop(number int) {
 
-	go func() {
-		for i := 1; i <= 50; i++ {
-			fmt.Println("I am Goroutine 2")
-			runtime.Gosched()
-		}
-	}()
+	for i := 1; i <= 5; i++ {
+		fmt.Println("looop numer", number)
+		fmt.Println(i)
+	}
+}
+
+func main() {
+	go demoLoop(1)
+	go demoLoop(2)
+	go demoLoop(3)
 
 	time.Sleep(time.Second)
 }
