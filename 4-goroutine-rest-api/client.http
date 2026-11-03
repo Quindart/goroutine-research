@@ -1,0 +1,15 @@
+### Dashboard API (chạy app bằng: go run . -mock)
+GET http://localhost:8087/api/v1/dashboard
+Accept: application/json
+
+### Mock user service
+GET http://localhost:8081/api/v1/users/me
+Accept: application/json
+
+### Mock order service
+GET http://localhost:8082/api/v1/orders
+Accept: application/json
+
+### Mock notification service
+GET http://localhost:8083/api/v1/notifications
+Accept: application/json
