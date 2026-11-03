@@ -20,6 +20,7 @@ Repository gồm các ví dụ nhỏ để thực hành goroutine, channel và �
 | `7-waitgroup-channel` | Khung bài thực hành WaitGroup và channel; hiện chưa có phần triển khai. |
 | `8-select-channel` | Dùng `select` để nhận dữ liệu từ nhiều channel. |
 | `9-context-implement` | Truyền context và xử lý thời hạn hủy tác vụ. |
+| `10-context-with-server` | Dùng context theo request trong HTTP server, truyền request ID và hủy truy vấn giả lập khi hết thời hạn. |
 
 ## Cách chạy
 
@@ -38,6 +39,21 @@ go run . -mock
 ```
 
 Sau đó gửi request đến `http://localhost:8087/api/v1/dashboard`. Các mock service chạy ở cổng `8081`, `8082` và `8083`; có thể xem thêm request mẫu trong [`4-goroutine-rest-api/client.http`](4-goroutine-rest-api/client.http).
+
+Với bài HTTP server dùng context, chạy server:
+
+```sh
+cd 10-context-with-server
+go run .
+```
+
+Mở terminal khác và gọi endpoint:
+
+```sh
+curl http://localhost:8080/getUser
+```
+
+Endpoint mô phỏng truy vấn mất 2 giây, trả về tên người dùng khi hoàn tất và dùng context deadline để giới hạn thời gian xử lý.
 
 ## Lưu ý
 
