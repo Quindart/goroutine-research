@@ -43,6 +43,5 @@ func main() {
 			fmt.Println("Cancel cook mon")
 			return
 		}
-
 	}
 }
